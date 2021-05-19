@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <style>
+        h1.titulo{
+            display: none;
+        }
+    </style>
+
+    <script>
+        // cuando la pagina COMPLETA este lista y cargada, ejecutamos lo de adentro.
+        $(document).ready(function () {
+            
+            
+            $("h1.titulo").fadeIn();
+
+            //document.getElementById("subtitulo").onclick = function(){ alert ("HOLA"); };        
+            //document.getElementById("subtitulo").onclick = saludar;  
+      
+    
+            $("#btnMostrar").click(function () {
+                $("p").fadeIn();
+            });
+
+            $("#btnOcultar").click(function(){
+                $("p").fadeOut(2000);
+            });
+
+        });
+    </script>
+
+    <!-- IMPORTAMOS LIBRERIAS QUE NO NECESITAN DEL BODY -->
+
+</head>
+<body>
+    
+    <h1>HOLA MUNDO</h1>
+    <h1 class="titulo">HOLA TITULO</h1>
+
+    <p>PARRAFOS</p>
+    <p>PARRAFOS</p>
+    <p>PARRAFOS</p>
+    <p>PARRAFOS</p>
+    <p>PARRAFOS</p>
+    <p>PARRAFOS</p>
+
+    <h3 id="subtitulo">SUBTITULO</h3>
+
+    <button id="btnMostrar">MOSTRAR PARRAFOS</button>
+    <button id="btnOcultar">OCULTAR PARRAFOS</button>
+
+    <script>
+
+    </script>
+
+
+
+
+    <!-- IMPORTAMOS COSAS QUE NECESITEN SABER DE LA PAGINA. ES DECIR CUANDO EL CUERPO
+        YA FUE CARGADO-->
+    
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #titulo{
+            background-color: red;
+        }
+        p{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ul span{
+            background-color: blue;
+        }
+    </style>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <h1 id="titulo">HOLA</h1>
+
+    <p class="par">PARRAFO 1</p>
+    <p>PARRAFO 1</p>
+    <p class="par">PARRAFO 1</p>
+    <p>PARRAFO 1</p>
+    <p class="par">PARRAFO 1</p>
+    <p>PARRAFO 1</p>
+    <p>PARRAFO 1</p>
+    <p>PARRAFO 1</p>
+    <p>PARRAFO 9</p>
+    <p class="par">PARRAFO 10</p>
+
+    <ul>
+        <li>
+            <p> 
+                <span>CAMBIAME A MI!!!</span>
+            </p>
+        </li>
+    </ul>
+
+    
+    <script>
+
+        document.getElementById("titulo").innerHTML = "DESDE JAVASCRIPT";
+        $("#titulo").html("DESDE JQUERY");
+
+        let parrafos = document.getElementsByTagName("p");
+        for (let parrafo of parrafos){
+            parrafo.innerHTML = "DESDE JAVASCRIPT"
+        }
+
+        //lo mismo que  antes pero con JQUERY
+        $("p").html("DESDE JQUERY");
+        
+        $(".par").html("DESDE JQUERY CON CLASE");
+
+    </script>
+
+</body>
+</html>
