@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANTILLA DE BOOTSTRAP CON JQUERY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+
+                <h3>FORMULARIO Y USO DEL VAL()</h3>
+                    <input type="hidden" name="id" value="7">
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" placeholder="ingrese su email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+
+                    <button pancho="HOLA" id="boton1" type="button" class="btn btn-primary">Valor del EMAIL</button>
+                    <button id="boton2" type="button" class="btn btn-primary">Valor del Password</button>
+                
+            </div>
+            <div class="col">
+                <h3>Uso del THIS</h3>
+                <p class="con-accion">PARRAFO 1</p>
+                <p>PARRAFO 2</p>
+                <p>PARRAFO 3</p>
+                <p>PARRAFO 4</p>
+                <p class="con-accion">PARRAFO 5</p>
+                <p>PARRAFO 6</p>
+                <p class="con-accion">PARRAFO 7</p>
+                <p>PARRAFO 8</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img id="imagen" src="onepiece-luffy.jpg" width="300">
+            </div>
+            <div class="col">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Botón</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Francisco</td>
+                            <td>Boisier</td>
+                            <td><button nombre="Francisco" apellido="Boisier" class="btn btn-info btnInfo"> Info </button></td>
+                        </tr>
+                        <tr>
+                            <td>Javier</td>
+                            <td>Sandoval</td>
+                            <td><button nombre="Javier" apellido="Sandoval" class="btn btn-info btnInfo"> Info </button></td>
+                        </tr>
+                        <tr>
+                            <td>Adrian</td>
+                            <td>Miranda</td>
+                            <td><button nombre="Adrian" apellido="Miranda" class="btn btn-info btnInfo"> Info </button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- DESDE ACA SOLO SCRIPT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        /*
+            .val() //obtener y para asignar
+            .attr() // OBTENER o ASIGNAR un ATRIBUTO.
+        */
+
+        $(".btnInfo").click(function (){
+            console.log ("click en el boton");
+
+            let nombre = $(this).attr("nombre");
+            let apellido = $(this).attr("apellido");
+
+            console.log(nombre + " " + apellido);
+
+        });
+
+        $("#imagen").click(function(){
+            
+            console.log("LA IMAGEN ACTUAL ANTES DE CAMBIOAR ES: ",  $("#imagen").attr("src"));//OBTENGO
+            $("#imagen").attr("src", "onepiece.jpg"); //ASIGNO un nuevo valor.
+
+        });
+
+        $("#exampleInputEmail1").val("ASIGNACION");
+
+        $("#boton1").click(function(){
+            let email = $("#exampleInputEmail1").val(); // obetemos el valor del email.
+            alert(email);
+        });
+
+        $("#boton2").click(function(){
+            let password = $("#exampleInputPassword1").val(); // obetemos el valor del password.
+            
+            if(password.length < 6){
+                alert("OJO TU CONSTREÑA ES INSEGURA. ");
+            }
+
+        });
+
+        $(".con-accion").click(function(){
+            $(this).hide();
+        });
+
+
+
+    </script>
+</body>
+
+</html>
