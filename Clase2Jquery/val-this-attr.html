@@ -57,12 +57,12 @@
 
         <div class="row">
             <div class="col">
-                <img id="imagen" src="onepiece-luffy.jpg" width="300">
+                <img id="imagen" class="ayuda" ayuda="Esta es una imagen para explicar ATTR" src="onepiece-luffy.jpg" width="300">
             </div>
             <div class="col">
-                <table class="table table-bordered table-striped">
+                <table basedato="productos" class="table table-bordered table-striped">
                     <thead>
-                        <tr>
+                        <tr fila="30">
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Botón</th>
@@ -84,13 +84,20 @@
                             <td>Miranda</td>
                             <td><button nombre="Adrian" apellido="Miranda" class="btn btn-info btnInfo"> Info </button></td>
                         </tr>
+                        <tr>
+                            <td>Jose</td>
+                            <td>XXPEPAPA</td>
+                            <td><button nombre="Jose" apellido="XXPEPAPA" class="btn btn-info btnInfo"> Info </button></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
+    <p class="btn btn-primary">Hola</p>
 
+    <h1 class="btnInfo ayuda" ayuda="Es para explicar algo." hola="MUNDO" nombre="Igual" apellido="FUNCIONO!!!!">HOLA MUNDO</h1>
 
     <!-- DESDE ACA SOLO SCRIPT -->
 
@@ -104,10 +111,17 @@
 
     <script>
 
+        console.log($("h1.btnInfo").attr("hola"));
+
+        $(".ayuda").mouseover(function(){
+            console.log($(this).attr("ayuda"));
+        });
+
         /*
             .val() //obtener y para asignar
             .attr() // OBTENER o ASIGNAR un ATRIBUTO.
         */
+        
 
         $(".btnInfo").click(function (){
             console.log ("click en el boton");
@@ -119,10 +133,19 @@
 
         });
 
+
         $("#imagen").click(function(){
             
+            
             console.log("LA IMAGEN ACTUAL ANTES DE CAMBIOAR ES: ",  $("#imagen").attr("src"));//OBTENGO
-            $("#imagen").attr("src", "onepiece.jpg"); //ASIGNO un nuevo valor.
+
+            if("onepiece-luffy.jpg" ==  $("#imagen").attr("src"))
+                $("#imagen").attr("src", "onepiece.jpg"); //ASIGNO un nuevo valor.
+            else
+                $("#imagen").attr("src", "onepiece-luffy.jpg"); //ASIGNO un nuevo valor.
+            
+
+            
 
         });
 

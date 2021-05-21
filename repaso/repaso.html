@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQUERY</title>
+
+    <style>
+        img{
+            height: 100px;
+            border-radius: 15px;
+            border: 1px solid black;
+            display: block;
+            margin: 10px;
+        }
+        .imagen{
+            height: 200px;
+            border-radius: 20px;
+            border: 5px solid black;
+            display: block;
+            margin: 20px;
+        }
+        label{
+            display: block;
+        }
+        button{
+            display: block;
+        }
+        .rojo{
+            color:red;
+        }
+
+        .grande{
+            font-size: 3em;
+        }
+
+        .rojo{
+            color:red;
+        }
+        .azul{
+            color:blue;
+        }
+
+        .fondo-negro{
+            background-color: black;
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            //Ten en cuenta el flujo básico de utilizar jQuery:
+            //Selecciona el elemento, clase o id utilizando el selector jQuery. 
+            //Agrega un event listener: ¿Cómo quieres que este evento sea activado?
+            //Escribe el código sobre lo que quieres que suceda cuando el evento sea activado
+            // $(<<selector>>).<<evento>>(function(){
+            //    //escribir codigo aquí
+            // });
+
+            // seleccionamos todos los h1 con clase rojo y todos los P de la pagina. 
+            $("h1.rojo, p").click(function(){
+                console.log("HAN HECHO CLICK");
+            });
+
+            $("#img1").hide();
+
+            $("#show").click(function(){
+                $("#img1").show();
+            });
+
+            $("#hide").click(function(){
+                $("#img2").hide();
+            });
+            $("#slide").click(function(){
+                $("#img3").slideUp(3000);
+            });
+            $("#fade").click(function(){
+                $("#img4").fadeOut(5000);
+            });
+
+            $("#addclass").click(function(){
+                $("#img5").addClass("imagen");
+            });
+
+            $("#removeclass").click(function(){
+                $("#img6").removeClass("imagen");
+            });
+
+            $("#css").click(function(){
+                //border-radius: 15px;
+                let valorActual = $("#img7").css("border-radius"); //obtiene el valor de la regla indicada
+                console.log(valorActual);
+                $("#img7").css("border-radius", "1px"); // asigna el valor a la regla indicada.
+            });
+
+            $("#dom").click(function(){
+                
+                $("#titulo").after("<span class='accion'>after</span>");// agrega la etiqueta span DESPUES de lo seleccionado
+                $("#titulo").append("<span  class='accion'>append</span>"); //agrega la etiqueta span dentro de lo seleccionado y al FINAL. es decir DESPUES del contenido. 
+                $("#titulo").prepend("<span  class='accion'>prepend</span>"); //agrega la etiqueta span dentro de lo seleccionado y al principio. es decir antes del contenido. 
+                $("#titulo").before("<span  class='accion'>before</span>"); // agrega la etiqueta span ANTES de lo seleccionado
+
+            });
+
+            $("#reset").click(function(){
+                $(".accion").remove();
+            });
+
+            // *************************************FORMULARIO
+
+            $("#edad").val(18); // ASIGNANDO EL VALOR
+            $("#nombre").val("FRANCISCO"); // ASIGNANDO EL VALOR
+
+            $("#btnEnviar").click(function () { 
+                let usuario = {
+                    edad : $("#edad").val(), // obtiene el valor
+                    nombre : $("#nombre").val(),// obtiene el valor
+                }
+
+                console.log(usuario);
+
+                if(verificarEdad(usuario)){
+                    console.log("EL USUARIO ES MAYOR DE EDAD");
+                }else{
+                    console.log("EL USUARIO ES MENOR DE EDAD");
+                }
+
+            });
+
+
+            function verificarEdad(objUsuario){
+                return objUsuario.edad >= 18;
+            }
+
+            $("h3").html("<span class='rojo'> SOY ROJO CARGADO DESDE JQUERY EN LA LINEA 126 </span>");
+            $("h2").text("<span class='rojo'> SOY ROJO CARGADO DESDE JQUERY EN LA LINEA 126 </span>");
+
+            //crearmos un boton que elimine todas las imagenes y que aparesca su ALT.
+            $("#falla").click(function(){
+                $("img").attr("src","hola"); // cambiamos el src de todas las imagenes en hola, imagen que no existe.
+                $("img").attr("alt","FALLA EN CARGAR LA IMAGEN xD");
+            });
+
+
+            $("#attr").click(function(){
+                let original = $("#img8").attr("src");
+                let respaldo = $("#img8").attr("respaldo");
+
+                $("#img8").attr("src", respaldo);
+                $("#img8").attr("respaldo", original);
+                
+            });
+
+            $(".img9").click(function(){
+                let original = $(this).attr("src");
+                let respaldo = $(this).attr("respaldo");
+
+                $(this).attr("src", respaldo);
+                $(this).attr("respaldo", original);
+            });
+
+            $(".modificar").click(function(){
+                //$(".modificar").attr("class", "rojo");
+                $(".modificar").removeClass("rojo");
+                $(".modificar").addClass("azul");
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1 class="grande rojo fondo-negro modificar">DATO DE EJEMPLO</h1>
+    <button id="falla">FALLA IMAGENES</button>
+
+    <h1 class="rojo">H1 Esto es ROJO</h1>
+    <h1> H1 ESTO NO TIENE CLASE </h1>
+
+    <img id="img1" src="onepiece.jpg" alt=""><button id="show"> Show </button>
+    <img id="img2" src="onepiece.jpg" alt=""><button id="hide"> Hide </button>
+    <img id="img3" src="onepiece.jpg" alt=""><button id="slide"> slideUp </button>
+    <img id="img4" src="onepiece.jpg" alt=""><button id="fade"> fadeOut </button>
+    
+    <img id="img5" src="onepiece.jpg" alt=""><button id="addclass"> addClass </button>
+    <img id="img6" src="onepiece.jpg" alt="" class="imagen"><button id="removeclass"> removeClass </button>
+
+    <img id="img7" src="onepiece.jpg" alt=""><button id="css"> css </button>
+
+    <img id="img8" src="onepiece.jpg" alt="" respaldo="onepiece-luffy.jpg"><button id="attr"> ATTR </button>
+    
+    <img class="img9" src="onepiece.jpg" alt="" respaldo="onepiece-luffy.jpg">
+    <img class="img9" src="onepiece1.jpg" alt="" respaldo="onepiece-luffy1.jpg">
+    <img class="img9" src="onepiece2.jpg" alt="" respaldo="onepiece-luffy2.jpg">
+    <img class="img9" src="onepiece3.jpg" alt="" respaldo="onepiece-luffy3.jpg">
+    <img class="img9" src="onepiece.jpg" alt="" respaldo="onepiece-luffy.jpg">
+    <img class="img9" src="onepiece.jpg" alt="" respaldo="onepiece-luffy.jpg">
+    
+
+    <hr>
+
+    <h1 id="titulo">ALGO</h1><button id="dom"> Manipular DOM </button><button id="reset"> Resetear DOM </button>
+    
+    <hr>
+    <h3>Formulario</h3>
+    <h2>Esto es TEXT</h2>
+    <label>Ingresa tu EDAD</label>
+    <input type="number" name="edad" id="edad">
+    <label>Ingresa tu Nombre</label>
+    <input type="text" name="nombre" id="nombre">
+    <button id="btnEnviar" >Enviar</button>
+
+
+</body>
+
+</html>
